@@ -1,0 +1,80 @@
+[gd_resource type="ShaderMaterial" load_steps=8 format=2]
+
+[ext_resource path="res://Scenes/Game_Enviroment/Assets/Terrain/Orthoimages/6_K/Q4111E.webp" type="Texture" id=1]
+[ext_resource path="res://Scenes/Game_Enviroment/Assets/Terrain/Orthoimages/6_K/P4222H.webp" type="Texture" id=2]
+[ext_resource path="res://Scenes/Game_Enviroment/Assets/Terrain/Orthoimages/6_K/Q4111G.webp" type="Texture" id=3]
+[ext_resource path="res://Scenes/Game_Enviroment/Assets/Terrain/Orthoimages/6_K/P4222F.webp" type="Texture" id=4]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type spatial;
+render_mode blend_mix,depth_draw_opaque,cull_back,diffuse_burley,specular_schlick_ggx;
+uniform sampler2D texture_detail : hint_albedo;
+uniform sampler2D texture_north_west : hint_albedo;
+uniform sampler2D texture_north_east : hint_albedo;
+uniform sampler2D texture_south_west : hint_albedo;
+uniform sampler2D texture_south_east : hint_albedo;
+uniform sampler2D height_north_west;
+uniform sampler2D height_north_east;
+uniform sampler2D height_south_west;
+uniform sampler2D height_south_east;
+uniform vec4 deform_color : hint_color;
+
+void fragment() {
+	vec3 world_coords = (CAMERA_MATRIX * vec4(VERTEX,1.0)).xyz;
+	float height = world_coords.y;
+	float terrain_distance = length(VERTEX);
+	vec2 tile_coords = world_coords.xz / 3000.0;
+	vec2 tile_uv = fract(tile_coords);
+	bool tile_x_parity = int(mod(tile_coords.x,2)) == 1;
+	bool tile_z_parity = int(mod(tile_coords.y,2)) == 1;
+	vec3 terrain_color;
+	float terrain_height;
+	if (tile_z_parity) {
+		if (tile_x_parity) {
+			// NW quad
+			terrain_color = texture(texture_north_west,tile_uv).rgb;
+			terrain_height = texture(height_north_west,tile_uv).r;
+		}
+		else {
+			// NE quad
+			terrain_color = texture(texture_north_east,tile_uv).rgb;
+			terrain_height = texture(height_north_east,tile_uv).r;
+		}
+	}
+	else {
+		if (tile_x_parity) {
+			// SW quad
+			terrain_color = texture(texture_south_west,tile_uv).rgb;
+			terrain_height = texture(height_south_west,tile_uv).r;
+		}
+		else {
+			// SE quad
+			terrain_color = texture(texture_south_east,tile_uv).rgb;
+			terrain_height = texture(height_south_east,tile_uv).r;
+		}
+	}
+	float terrain_difference = abs(terrain_height - height);
+	terrain_color = mix(terrain_color, deform_color.rgb, clamp(terrain_difference - terrain_distance / 50.0 - 1.0, 0.0, 1.0));
+	float detail_factor = texture(texture_detail,world_coords.xz * 0.5).r;
+	ALBEDO = terrain_color * (1.0 - detail_factor);
+}
+"
+
+[sub_resource type="OpenSimplexNoise" id=2]
+octaves = 9
+persistence = 1.0
+
+[sub_resource type="NoiseTexture" id=3]
+width = 1024
+height = 1024
+seamless = true
+noise = SubResource( 2 )
+
+[resource]
+shader = SubResource( 1 )
+shader_param/deform_color = Color( 0.309804, 0.262745, 0.188235, 1 )
+shader_param/texture_detail = SubResource( 3 )
+shader_param/texture_north_west = ExtResource( 1 )
+shader_param/texture_north_east = ExtResource( 3 )
+shader_param/texture_south_west = ExtResource( 4 )
+shader_param/texture_south_east = ExtResource( 2 )
