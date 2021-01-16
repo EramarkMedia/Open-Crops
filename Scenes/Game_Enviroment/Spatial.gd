@@ -76,4 +76,4 @@ func _on_ClearButton_toggled(button_pressed):
 func _on_Timer2_timeout():
 	var camera = $Camera
 	var tile_generator = $VoxelLodTerrain.stream.fallback_stream
-	get_node(elevation_label).text = str("Elevation: ", tile_generator.get_elevation(camera.transform.origin.x,camera.transform.origin.z))
+	get_node(elevation_label).text = str("Elevation:", tile_generator.get_elevation(camera.transform.origin.x,camera.transform.origin.z))
