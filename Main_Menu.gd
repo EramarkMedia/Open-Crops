@@ -6,7 +6,7 @@ extends Control
 func _On_Start_Game_Button_Pressed():
 	#check_asset_essentials()
 	
-	var game_enviroment = preload("res://Scenes/Game_Enviroment/Open_Crops_Env.tscn").instance()
+	var game_enviroment = load("res://Scenes/Game_Enviroment/Open_Crops_Env.tscn").instance()
 	add_child(game_enviroment)
 	get_node(".").hide()
 	get_node("AudioStreamPlayer").stop()
