@@ -23,7 +23,7 @@ void fragment() {
 	vec3 world_coords = (CAMERA_MATRIX * vec4(VERTEX,1.0)).xyz;
 	float height = world_coords.y;
 	float terrain_distance = length(VERTEX);
-	vec2 tile_coords = world_coords.xz / 3000.0;
+	vec2 tile_coords = world_coords.xz / 6000.0;
 	vec2 tile_uv = fract(tile_coords);
 	bool tile_x_parity = int(mod(tile_coords.x,2)) == 1;
 	bool tile_z_parity = int(mod(tile_coords.y,2)) == 1;
