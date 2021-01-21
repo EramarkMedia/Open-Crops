@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://Scenes/Game_Enviroment/Camera.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Game_Enviroment/Terrain Material.tres" type="Material" id=2]
@@ -7,16 +7,27 @@
 [ext_resource path="res://Scenes/Game_Enviroment/Assets/Enviroment/Debug/Debug_Cursor/Debug_Cursor.gd" type="Script" id=5]
 [ext_resource path="res://Scenes/Game_Enviroment/Assets/Enviroment/Debug/Debug_Cursor/3D_Debug_Material_Grey.material" type="Material" id=6]
 [ext_resource path="res://Scenes/Game_Enviroment/Assets/Enviroment/Debug/Debug_Cursor/3D_Debug_Material_Black.material" type="Material" id=7]
+[ext_resource path="res://Scenes/Game_Enviroment/Assets/Enviroment/Vegetation/Trees/Pine/Branch_Bc.png" type="Texture" id=8]
+[ext_resource path="res://Scenes/Game_Enviroment/Assets/Enviroment/Vegetation/Trees/Pine/PineBark2_1K_albedo.png" type="Texture" id=9]
+[ext_resource path="res://Scenes/Game_Enviroment/Assets/Enviroment/Vegetation/Trees/Pine/PineBark2_1K_normal.png" type="Texture" id=10]
+[ext_resource path="res://Scenes/Game_Enviroment/Assets/Enviroment/Vegetation/Trees/Pine/Pine_Tree.obj" type="ArrayMesh" id=11]
+[ext_resource path="res://Scenes/Game_Enviroment/Assets/Useables/Transportation/Forklift_Pallets/Euro_Pallette/EUR_Palette.obj" type="ArrayMesh" id=12]
+[ext_resource path="res://Scenes/Game_Enviroment/Assets/Useables/Transportation/Forklift_Pallets/Euro_Pallette/Textures/Eur_Pallette.png" type="Texture" id=13]
+[ext_resource path="res://Scenes/Game_Enviroment/Assets/Useables/Transportation/Forklift_Pallets/Euro_Pallette/Textures/Eur_Pallette_Norm.png" type="Texture" id=14]
+[ext_resource path="res://Scenes/Main_menu/Fonts/Open_Crops.otf" type="DynamicFontData" id=15]
 
-[sub_resource type="TileGenerator" id=1]
+[sub_resource type="CapsuleMesh" id=1]
+radius = 0.1
 
-[sub_resource type="VoxelStreamRegionFiles" id=2]
-fallback_stream = SubResource( 1 )
+[sub_resource type="TileGenerator" id=2]
+
+[sub_resource type="VoxelStreamRegionFiles" id=3]
+fallback_stream = SubResource( 2 )
 save_fallback_output = false
 directory = "user://world"
 lod_count = 4
 
-[sub_resource type="StyleBoxFlat" id=3]
+[sub_resource type="StyleBoxFlat" id=4]
 bg_color = Color( 0.324, 0.72, 0.357, 0.305882 )
 border_width_left = 4
 border_width_top = 4
@@ -27,6 +38,40 @@ corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0.0235294, 0.0235294, 0.0235294, 0.294118 )
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0.223529, 0.219608, 0.219608, 0.490196 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 35
+font_data = ExtResource( 15 )
+
+[sub_resource type="SpatialMaterial" id=8]
+flags_transparent = true
+params_cull_mode = 2
+albedo_color = Color( 0.564706, 0.65098, 0.545098, 1 )
+albedo_texture = ExtResource( 8 )
+metallic_specular = 0.53
+
+[sub_resource type="SpatialMaterial" id=9]
+albedo_texture = ExtResource( 9 )
+normal_enabled = true
+normal_scale = 1.0
+normal_texture = ExtResource( 10 )
+
+[sub_resource type="SpatialMaterial" id=10]
+albedo_color = Color( 0.717647, 0.678431, 0.678431, 1 )
+albedo_texture = ExtResource( 13 )
+metallic_specular = 0.0
+normal_enabled = true
+normal_scale = 0.15
+normal_texture = ExtResource( 14 )
+
+[sub_resource type="BoxShape" id=11]
+extents = Vector3( 0.0426401, 0.01, 0.59859 )
 
 [node name="Spatial" type="Spatial"]
 script = ExtResource( 3 )
@@ -52,19 +97,33 @@ far = 900.0
 script = ExtResource( 1 )
 slider = NodePath("../Panel/VBoxContainer/HBoxContainer4/HSlider")
 
+[node name="Pusher" type="MeshInstance" parent="Camera"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, -2.12902 )
+visible = false
+mesh = SubResource( 1 )
+material/0 = null
+
 [node name="VoxelLodTerrain" type="VoxelLodTerrain" parent="."]
-stream = SubResource( 2 )
+stream = SubResource( 3 )
 view_distance = 900
 viewer_path = NodePath("../Camera")
 material = ExtResource( 2 )
 run_stream_in_editor = false
+__meta__ = {
+"_editor_description_": "Orthoimage Order For Terjärv Region.
+Texture North West: Q4111E
+Texture North East: Q4111G
+Texture South West: P4222F
+Texture South East: P4222H
+"
+}
 
 [node name="Panel" type="Panel" parent="."]
 margin_left = 20.0
 margin_top = 20.0
 margin_right = 460.0
 margin_bottom = 170.0
-custom_styles/panel = SubResource( 3 )
+custom_styles/panel = SubResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -75,7 +134,7 @@ anchor_bottom = 1.0
 margin_left = 10.0
 margin_top = 10.0
 margin_right = -10.0
-margin_bottom = -10.0
+margin_bottom = -8.0
 __meta__ = {
 "_edit_lock_": true,
 "_edit_use_anchors_": false
@@ -87,12 +146,12 @@ margin_bottom = 16.0
 
 [node name="Label" type="Label" parent="Panel/VBoxContainer/HBoxContainer4"]
 margin_top = 1.0
-margin_right = 117.0
+margin_right = 120.0
 margin_bottom = 15.0
-text = "Speed multiplyer: "
+text = "Movement Speed: "
 
 [node name="HSlider" type="HSlider" parent="Panel/VBoxContainer/HBoxContainer4"]
-margin_left = 121.0
+margin_left = 124.0
 margin_right = 420.0
 margin_bottom = 16.0
 size_flags_horizontal = 3
@@ -188,14 +247,89 @@ margin_right = 420.0
 margin_bottom = 132.0
 text = "Elevation: 00.00"
 
+[node name="Dev_Console_Panel" type="Panel" parent="."]
+visible = false
+margin_right = 1920.0
+margin_bottom = 200.0
+custom_styles/panel = SubResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Dev_Console_Panel"]
+margin_right = 1920.0
+margin_bottom = 200.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Dev_Console_Panel/ScrollContainer"]
+
+[node name="Dev_Console_Info_Panel" type="Panel" parent="Dev_Console_Panel"]
+margin_top = 200.0
+margin_right = 1920.0
+margin_bottom = 250.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Dev_Console_Info_Panel_Label" type="RichTextLabel" parent="Dev_Console_Panel/Dev_Console_Info_Panel"]
+margin_right = 1920.0
+margin_bottom = 50.0
+custom_styles/normal = SubResource( 6 )
+custom_fonts/normal_font = SubResource( 7 )
+
+[node name="Dev_Console_Info_Label_Handler_Timer" type="Timer" parent="Dev_Console_Panel"]
+
 [node name="Debug_Cursor" parent="." instance=ExtResource( 4 )]
 script = ExtResource( 5 )
 
 [node name="5m_Measure" parent="Debug_Cursor" index="1"]
 material/0 = ExtResource( 6 )
 material/1 = ExtResource( 7 )
+
+[node name="Test_Forest_Spatial" type="Spatial" parent="."]
+
+[node name="Tree_Pine_Test" type="MeshInstance" parent="Test_Forest_Spatial"]
+mesh = ExtResource( 11 )
+material/0 = SubResource( 8 )
+material/1 = SubResource( 9 )
+
+[node name="Euro_Pallette_Body" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0829954, 65.4062, 0 )
+collision_layer = 0
+mass = 3.06122
+
+[node name="Euro_Pallette_Model" type="MeshInstance" parent="Euro_Pallette_Body"]
+mesh = ExtResource( 12 )
+material/0 = SubResource( 10 )
+
+[node name="Euro_Pallette_Collision_Middle_Bottom" type="CollisionShape" parent="Euro_Pallette_Body"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00410633, -0.0491104, 0 )
+shape = SubResource( 11 )
+
+[node name="Euro_Pallette_Collision_Middle_Top" type="CollisionShape" parent="Euro_Pallette_Body"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00410633, 0.064949, 0 )
+shape = SubResource( 11 )
+
+[node name="Euro_Pallette_Collision_Left_Bottom" type="CollisionShape" parent="Euro_Pallette_Body"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.358774, -0.0491104, 0 )
+shape = SubResource( 11 )
+
+[node name="Euro_Pallette_Collision_Left_Top" type="CollisionShape" parent="Euro_Pallette_Body"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.358774, 0.0642471, 0 )
+shape = SubResource( 11 )
+
+[node name="Euro_Pallette_Collision_Right_Bottom" type="CollisionShape" parent="Euro_Pallette_Body"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.357979, -0.0491104, 0 )
+shape = SubResource( 11 )
+
+[node name="Euro_Pallette_Collision_Right_Top" type="CollisionShape" parent="Euro_Pallette_Body"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.357979, 0.063942, 0 )
+shape = SubResource( 11 )
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="timeout" from="Timer2" to="." method="_on_Timer2_timeout"]
 [connection signal="toggled" from="Panel/VBoxContainer/ClearButton" to="." method="_on_ClearButton_toggled"]
+[connection signal="timeout" from="Dev_Console_Panel/Dev_Console_Info_Label_Handler_Timer" to="." method="_On_Dev_Console_Info_Label_Handler_Timer_Timeout"]
 
 [editable path="Debug_Cursor"]
