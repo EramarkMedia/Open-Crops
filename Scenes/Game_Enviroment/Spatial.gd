@@ -7,6 +7,26 @@ export(NodePath) var geocords_label
 export(NodePath) var geocheck_label
 export(NodePath) var elevation_label
 
+
+#Developer Console Variables.
+#---------------------------------------#
+
+#Path To Dev Console.
+var dev_console = "Dev_Console_Panel"
+
+#Paths To Timers.
+var info_label_timer = "Dev_Console_Panel/Dev_Console_Info_Label_Handler_Timer"
+
+#Path To Info Panel.
+var dev_console_info_panel = "Dev_Console_Panel/Dev_Console_Info_Panel"
+
+#Path To Info Panel Text Label.
+var info_panel_text_label = "Dev_Console_Panel/Dev_Console_Info_Panel/Dev_Console_Info_Panel_Label"
+
+
+
+#---------------------------------------#
+
 var etrs89proj = ETRS89Projection.new()
 
 func round_tenths(f):
@@ -20,6 +40,46 @@ func deg2dms(deg):
 	var mrem = ms - m
 	var ss = mrem * 60
 	return str(d,"°",m,"'",ss,'"')
+
+
+#Events.
+
+#Input Events.
+func _input(event):
+	
+	
+	
+	#Toggle Developer Console Visibility Event.
+	if event.is_action_pressed("toggle_developer_console"):
+		#Visibility Status.
+		var dev_con_visible = get_node(dev_console).is_visible()
+		
+		#Dev Panel Visible.
+		if dev_con_visible == true:
+			get_node(dev_console).hide()
+		
+		#Dev Panel Hidden.
+		if dev_con_visible == false:
+			get_node(dev_console).show()
+			
+			#Show Info Panel Text Label.
+			get_node(info_panel_text_label).show()
+			
+			#Start Timer To Hide Info Label.
+			get_node(info_label_timer).start(3)
+		pass
+
+#Timeout Events.
+func _On_Dev_Console_Info_Label_Handler_Timer_Timeout():
+	#Stop The Info Label Timer.
+	get_node(info_label_timer).stop()
+	
+	#Hide Info Panel.
+	get_node(dev_console_info_panel).hide()
+	
+	#Hide Info Label.
+	get_node(info_panel_text_label).hide()
+	pass 
 
 # warning-ignore:unused_argument
 func _process(delta):
@@ -60,10 +120,10 @@ func _on_Timer_timeout():
 		var vtool = $VoxelLodTerrain.get_voxel_tool()
 		vtool.channel = 0
 		vtool.mode = VoxelTool.MODE_REMOVE
-		vtool.do_sphere(camera.transform.origin, 10)
+		vtool.do_sphere(camera.transform.origin, 1)
 		vtool.channel = 1
 		vtool.mode = VoxelTool.MODE_REMOVE
-		vtool.do_sphere(camera.transform.origin, 10)
+		vtool.do_sphere(camera.transform.origin, 1)
 
 
 func _on_ClearButton_toggled(button_pressed):
@@ -77,3 +137,8 @@ func _on_Timer2_timeout():
 	var camera = $Camera
 	var tile_generator = $VoxelLodTerrain.stream.fallback_stream
 	get_node(elevation_label).text = str("Elevation:", tile_generator.get_elevation(camera.transform.origin.x,camera.transform.origin.z))
+
+
+
+
+
