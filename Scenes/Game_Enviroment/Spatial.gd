@@ -23,7 +23,8 @@ var dev_console_info_panel = "Dev_Console_Panel/Dev_Console_Info_Panel"
 #Path To Info Panel Text Label.
 var info_panel_text_label = "Dev_Console_Panel/Dev_Console_Info_Panel/Dev_Console_Info_Panel_Label"
 
-
+#Path To Dev Console Vbox Container.
+var dev_console_vbox_container = "Dev_Console_Panel/ScrollContainer/VBoxContainer"
 
 #---------------------------------------#
 
@@ -40,6 +41,10 @@ func deg2dms(deg):
 	var mrem = ms - m
 	var ss = mrem * 60
 	return str(d,"°",m,"'",ss,'"')
+
+
+
+
 
 
 #Events.
