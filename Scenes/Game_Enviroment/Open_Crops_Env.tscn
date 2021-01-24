@@ -48,6 +48,9 @@ font_data = ExtResource( 15 )
 
 [node name="Spatial" type="Spatial"]
 script = ExtResource( 3 )
+__meta__ = {
+"_editor_description_": ""
+}
 x_label = NodePath("Panel/VBoxContainer/HBoxContainer/GridContainer/X Label")
 y_label = NodePath("Panel/VBoxContainer/HBoxContainer/GridContainer/Y Label")
 z_label = NodePath("Panel/VBoxContainer/HBoxContainer/GridContainer/Z Label")
