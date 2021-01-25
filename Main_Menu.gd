@@ -1,17 +1,27 @@
 extends Control
 
+#Game Enviroment Loading.
+var game_enviroment
+
+#Assets Status Query.
+var check_essentials
 
 
 #Events
+
+#Main Menu Start Button.
 func _On_Start_Game_Button_Pressed():
-	#check_asset_essentials()
-	
-	var game_enviroment = load("res://Scenes/Game_Enviroment/Open_Crops_Env.tscn").instance()
-	add_child(game_enviroment)
-	get_node(".").hide()
-	get_node("AudioStreamPlayer").stop()
-	
+	#Check If We Got Assets & Handle The Rest From There.
+	check_asset_essentials()
 	pass 
+
+#Main Menu Exit Button.
+func _On_Exit_Button_Pressed():
+	#If Anyone Ever Wants To Exit.
+	get_tree().quit()
+	pass 
+
+
 
 func _On_Prompt_User_WindowDialog_Hide():
 	reset_user_prompt_window("","","","")
@@ -68,26 +78,28 @@ func check_asset_essentials():
 	
 	
 	#Do We Have The New Assets Library?
-	var check_essentials = Directory.new().dir_exists("res://Scenes/Game_Enviroment/Assets/")
-	#If Not, Notify User.
+	check_essentials = Directory.new().dir_exists("res://Scenes/Game_Enviroment/Assets/")
+	
 	
 	
 	if check_essentials == false:
-		
+		#If Not, Notify User.
 		display_user_prompt_window("Error","Asset Library Missing","Add Library & Download Content","select")
+		#	print("Do HTTP-Request In Future")
 		
 		
 		
 	if check_essentials == true:
 		#We Got The Assets Folder.
-		#Do We Have Terrain Folder Inside Assets? Maybe Added Manually ?
-		var check_terrain_content = Directory.new().dir_exists("res://Terrain/")
-		#If Not Notify & Grab.
-		if check_terrain_content == false:
-			#Notify On Screen.
-			print("Do HTTP-Request In Future")
-			
-			
+		#Launch Game Enviroment & Handle Essentials For That.
+		
+		#Hide Main Menu
+		get_node(".").hide()
+		#Sadly, Stop Our Superawesome Intro Song.
+		get_node("AudioStreamPlayer").stop()
+		#Add Game Enviroment Scene.
+		add_child(game_enviroment)
+		
 		
 	
 	pass
@@ -100,6 +112,12 @@ func _ready():
 	get_node("Header_Slide_In_AnimationPlayer").play()
 	#Delay Intro Music Slightly.
 	get_node("Music_Intro_Delay_Timer").start(1)
+	
+	#Dont Think There Is Any Use Of Preloading With The Voxel Terrain, Atleast Not For Load Time?.
+	game_enviroment = preload("res://Scenes/Game_Enviroment/Open_Crops_Env.tscn").instance()
+	
+	
+	
 	
 	pass 
 
@@ -129,9 +147,11 @@ func _On_Music_Intro_Delay_Timer_Timeout():
 func _On_Header_Slide_In_AnimationPlayer_Animation_Finished(Header_Slide_In):
 	#Insert Version Information.
 	get_node("Top_Panel/Visibility_Control_Version_Info").show()
-	#And Check If We Got Assets.
-	check_asset_essentials()
+	
 	pass 
+
+
+
 
 
 

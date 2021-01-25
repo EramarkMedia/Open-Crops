@@ -287,8 +287,21 @@ focus_mode = 0
 custom_fonts/font = SubResource( 10 )
 enabled_focus_mode = 0
 text = "Exit"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Assets_HTTPRequest" type="HTTPRequest" parent="."]
+download_file = "res://Scenes/Game_Enviroment/"
+download_chunk_size = 65536
+use_threads = true
+__meta__ = {
+"_editor_description_": "Grab Assets Over Network.
+Use Simplehttpserver or similar for now."
+}
 [connection signal="timeout" from="Music_Intro_Delay_Timer" to="." method="_On_Music_Intro_Delay_Timer_Timeout"]
 [connection signal="finished" from="AudioStreamPlayer" to="." method="_On_AudioStreamPlayer_Finished"]
 [connection signal="animation_finished" from="Header_Slide_In_AnimationPlayer" to="." method="_On_Header_Slide_In_AnimationPlayer_Animation_Finished"]
 [connection signal="hide" from="Prompt_User_WindowDialog" to="." method="_On_Prompt_User_WindowDialog_Hide"]
 [connection signal="pressed" from="Visibility_Control_Main_Menu_Buttons/Start_Game_Button" to="." method="_On_Start_Game_Button_Pressed"]
+[connection signal="pressed" from="Visibility_Control_Main_Menu_Buttons/Exit_Button" to="." method="_On_Exit_Button_Pressed"]
