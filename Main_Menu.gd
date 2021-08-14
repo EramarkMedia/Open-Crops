@@ -65,8 +65,9 @@ func display_user_prompt_window(var window_header,var header_label,var footer_la
 
 
 func check_asset_essentials():
-	#Check If We Have Assets Root Folder Present.
+	#Check If We Have Assets Folder Present.
 	#If Not, Lets Try To Do Something About it.
+	#Maybe handle over HTTPRequest in future ?
 	
 	
 	#Do We Have The New Assets Library?
@@ -106,10 +107,10 @@ func _ready():
 
 
 
-#func _On_AudioStreamPlayer_Finished():
-	#Attention. 
-	#get_node("AudioStreamPlayer").play()
-#	pass 
+func _On_AudioStreamPlayer_Finished():
+	if ($".").is_visible():
+		get_node("AudioStreamPlayer").play()
+	
 
 
 func _On_Music_Intro_Delay_Timer_Timeout():
