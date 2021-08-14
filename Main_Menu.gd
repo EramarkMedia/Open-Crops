@@ -70,7 +70,7 @@ func check_asset_essentials():
 	
 	
 	#Do We Have The New Assets Library?
-	check_essentials = Directory.new().dir_exists("res://Scenes/Game_Enviroment/Assets/")
+	check_essentials = Directory.new().dir_exists("res://Assets/")
 	
 	
 	
