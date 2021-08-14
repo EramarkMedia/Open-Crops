@@ -1,19 +1,8 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scenes/Game_Enviroment/Camera.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Game_Enviroment/Terrain Material.tres" type="Material" id=2]
 [ext_resource path="res://Scenes/Game_Enviroment/Spatial.gd" type="Script" id=3]
-[ext_resource path="res://Scenes/Game_Enviroment/Assets/Enviroment/Debug/Debug_Cursor/Debug_Cursor.dae" type="PackedScene" id=4]
-[ext_resource path="res://Scenes/Game_Enviroment/Assets/Enviroment/Debug/Debug_Cursor/Debug_Cursor.gd" type="Script" id=5]
-[ext_resource path="res://Scenes/Game_Enviroment/Assets/Enviroment/Debug/Debug_Cursor/3D_Debug_Material_Grey.material" type="Material" id=6]
-[ext_resource path="res://Scenes/Game_Enviroment/Assets/Enviroment/Debug/Debug_Cursor/3D_Debug_Material_Black.material" type="Material" id=7]
-[ext_resource path="res://Scenes/Game_Enviroment/Assets/Enviroment/P4222H/Main_Scene/P4222H_Details.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Scenes/Game_Enviroment/Assets/Enviroment/P4222F/Main_Scene/P4222F_Details.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Scenes/Game_Enviroment/Enviroment_Editor/Icons/Add_Obj.png" type="Texture" id=10]
-[ext_resource path="res://Scenes/Main_menu/Fonts/Open_Crops.otf" type="DynamicFontData" id=11]
-[ext_resource path="res://Scenes/Game_Enviroment/Enviroment_Editor/Icons/Vegetation.png" type="Texture" id=12]
-[ext_resource path="res://Scenes/Game_Enviroment/Enviroment_Editor/Icons/Position.png" type="Texture" id=13]
-[ext_resource path="res://Scenes/Game_Enviroment/Dev_Console_Panel.gd" type="Script" id=14]
 
 [sub_resource type="CapsuleMesh" id=1]
 radius = 0.1
@@ -40,24 +29,6 @@ corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
-
-[sub_resource type="StyleBoxFlat" id=6]
-bg_color = Color( 0.0235294, 0.0235294, 0.0235294, 0.45098 )
-
-[sub_resource type="StyleBoxFlat" id=7]
-bg_color = Color( 0.172549, 0.172549, 0.172549, 1 )
-shadow_color = Color( 0.4, 0.639216, 0.356863, 0.6 )
-
-[sub_resource type="StyleBoxFlat" id=8]
-bg_color = Color( 0.0235294, 0.0235294, 0.0235294, 0.45098 )
-corner_radius_bottom_left = 20
-
-[sub_resource type="StyleBoxFlat" id=9]
-bg_color = Color( 0.0235294, 0.0235294, 0.0235294, 0.27451 )
-corner_radius_bottom_left = 20
-
-[sub_resource type="DynamicFont" id=10]
-font_data = ExtResource( 11 )
 
 [node name="Spatial" type="Spatial"]
 script = ExtResource( 3 )
@@ -114,11 +85,6 @@ Texture South West: P4222F
 Texture South East: P4222H
 "
 }
-
-[node name="P4222H_Details" parent="VoxelLodTerrain" instance=ExtResource( 8 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1500, 70, 1500 )
-
-[node name="P4222F_Details" parent="VoxelLodTerrain" instance=ExtResource( 9 )]
 
 [node name="Panel" type="Panel" parent="."]
 margin_left = 20.0
@@ -248,118 +214,6 @@ margin_top = 118.0
 margin_right = 420.0
 margin_bottom = 132.0
 text = "Elevation: 00.00"
-
-[node name="Dev_Console_Panel" type="Panel" parent="."]
-visible = false
-margin_right = 1920.0
-margin_bottom = 200.0
-custom_styles/panel = SubResource( 6 )
-script = ExtResource( 14 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ScrollContainer" type="ScrollContainer" parent="Dev_Console_Panel"]
-margin_right = 1920.0
-margin_bottom = 200.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Dev_Console_Panel/ScrollContainer"]
-
-[node name="Dev_Console_Text_Entry" type="TextEdit" parent="Dev_Console_Panel"]
-margin_top = 200.0
-margin_right = 1920.0
-margin_bottom = 225.0
-custom_styles/normal = SubResource( 7 )
-wrap_enabled = true
-caret_blink = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Dev_Console_Info_Label_Handler_Timer" type="Timer" parent="Dev_Console_Panel"]
-
-[node name="Visibility_Control_Enviroment_Editor" type="Control" parent="Dev_Console_Panel"]
-visible = false
-margin_right = 40.0
-margin_bottom = 40.0
-
-[node name="Enviroment_Tools_Panel" type="Panel" parent="Dev_Console_Panel/Visibility_Control_Enviroment_Editor"]
-margin_left = 1550.12
-margin_top = 225.225
-margin_right = 1920.12
-margin_bottom = 1080.23
-rect_min_size = Vector2( 100, 0 )
-custom_styles/panel = SubResource( 8 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Enviroment_Editor_Options_Panel" type="Panel" parent="Dev_Console_Panel/Visibility_Control_Enviroment_Editor/Enviroment_Tools_Panel"]
-margin_left = -155.321
-margin_top = 0.139801
-margin_right = -0.321167
-margin_bottom = 400.14
-custom_styles/panel = SubResource( 9 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Options_Panel_VBoxContainer" type="VBoxContainer" parent="Dev_Console_Panel/Visibility_Control_Enviroment_Editor/Enviroment_Tools_Panel/Enviroment_Editor_Options_Panel"]
-margin_right = 155.0
-margin_bottom = 400.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Add_Object_Button" type="Button" parent="Dev_Console_Panel/Visibility_Control_Enviroment_Editor/Enviroment_Tools_Panel/Enviroment_Editor_Options_Panel/Options_Panel_VBoxContainer"]
-margin_right = 155.0
-margin_bottom = 70.0
-focus_mode = 0
-custom_fonts/font = SubResource( 10 )
-enabled_focus_mode = 0
-text = "Object"
-icon = ExtResource( 10 )
-
-[node name="Add_Enviro" type="Button" parent="Dev_Console_Panel/Visibility_Control_Enviroment_Editor/Enviroment_Tools_Panel/Enviroment_Editor_Options_Panel/Options_Panel_VBoxContainer"]
-margin_top = 74.0
-margin_right = 155.0
-margin_bottom = 144.0
-focus_mode = 0
-custom_fonts/font = SubResource( 10 )
-enabled_focus_mode = 0
-text = "Enviro"
-icon = ExtResource( 12 )
-
-[node name="Add_Enviro2" type="Button" parent="Dev_Console_Panel/Visibility_Control_Enviroment_Editor/Enviroment_Tools_Panel/Enviroment_Editor_Options_Panel/Options_Panel_VBoxContainer"]
-margin_top = 148.0
-margin_right = 155.0
-margin_bottom = 218.0
-focus_mode = 0
-custom_fonts/font = SubResource( 10 )
-enabled_focus_mode = 0
-text = "Position"
-icon = ExtResource( 13 )
-
-[node name="FileDialog" type="FileDialog" parent="Dev_Console_Panel/Visibility_Control_Enviroment_Editor/Enviroment_Tools_Panel"]
-visible = true
-margin_left = 30.8361
-margin_top = 63.7949
-margin_right = 345.836
-margin_bottom = 263.795
-window_title = "Load Object"
-
-[node name="Debug_Cursor" parent="." instance=ExtResource( 4 )]
-script = ExtResource( 5 )
-
-[node name="5m_Measure" parent="Debug_Cursor" index="1"]
-material/0 = ExtResource( 6 )
-material/1 = ExtResource( 7 )
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="timeout" from="Timer2" to="." method="_on_Timer2_timeout"]
 [connection signal="toggled" from="Panel/VBoxContainer/ClearButton" to="." method="_on_ClearButton_toggled"]
-[connection signal="timeout" from="Dev_Console_Panel/Dev_Console_Info_Label_Handler_Timer" to="." method="_On_Dev_Console_Info_Label_Handler_Timer_Timeout"]
-
-[editable path="Debug_Cursor"]
