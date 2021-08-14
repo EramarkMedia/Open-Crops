@@ -53,14 +53,14 @@ func apply_image_as_height_texture(image, location):
 
 func _ready():
 	var tile_generator = $VoxelLodTerrain.stream.fallback_stream
-	tile_generator.set_cell(-1,-1,"res://Scenes/Game_Enviroment/Assets/Terrain/Heightmaps/Q4111E.tif")
-	apply_image_as_height_texture(preload("res://Scenes/Game_Enviroment/Assets/Terrain/Heightmaps/Q4111E.tif"), "height_north_west")
-	tile_generator.set_cell( 0,-1,"res://Scenes/Game_Enviroment/Assets/Terrain/Heightmaps/Q4111G.tif")
-	apply_image_as_height_texture(preload("res://Scenes/Game_Enviroment/Assets/Terrain/Heightmaps/Q4111G.tif"), "height_north_east")
-	tile_generator.set_cell(-1, 0,"res://Scenes/Game_Enviroment/Assets/Terrain/Heightmaps/P4222F.tif")
-	apply_image_as_height_texture(preload("res://Scenes/Game_Enviroment/Assets/Terrain/Heightmaps/P4222F.tif"), "height_south_west")
-	tile_generator.set_cell( 0, 0,"res://Scenes/Game_Enviroment/Assets/Terrain/Heightmaps/P4222H.tif")
-	apply_image_as_height_texture(preload("res://Scenes/Game_Enviroment/Assets/Terrain/Heightmaps/P4222H.tif"), "height_south_east")
+	tile_generator.set_cell(-1,-1,"res://Assets/Terrain/Heightmaps/Q4111E.tif")
+	apply_image_as_height_texture(preload("res://Assets/Terrain/Heightmaps/Q4111E.tif"), "height_north_west")
+	tile_generator.set_cell( 0,-1,"res://Assets/Terrain/Heightmaps/Q4111G.tif")
+	apply_image_as_height_texture(preload("res://Assets/Terrain/Heightmaps/Q4111G.tif"), "height_north_east")
+	tile_generator.set_cell(-1, 0,"res://Assets/Terrain/Heightmaps/P4222F.tif")
+	apply_image_as_height_texture(preload("res://Assets/Terrain/Heightmaps/P4222F.tif"), "height_south_west")
+	tile_generator.set_cell( 0, 0,"res://Assets/Terrain/Heightmaps/P4222H.tif")
+	apply_image_as_height_texture(preload("res://Assets/Terrain/Heightmaps/P4222H.tif"), "height_south_east")
 
 func _on_Timer_timeout():
 	var camera = $Camera
