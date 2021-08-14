@@ -156,7 +156,8 @@ margin_top = -142.805
 margin_right = 199.801
 margin_bottom = 257.195
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_use_anchors_": false,
+"_editor_description_": "Make this a separate scene in the future, as adviced."
 }
 
 [node name="Window_Header_Label" type="RichTextLabel" parent="Prompt_User_WindowDialog"]
