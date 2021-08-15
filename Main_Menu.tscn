@@ -65,7 +65,7 @@ font_data = ExtResource( 2 )
 [sub_resource type="DynamicFont" id=8]
 size = 100
 outline_size = 5
-outline_color = Color( 0.0313726, 0.501961, 0.0313726, 1 )
+outline_color = Color( 0.568627, 0.0313726, 0.0313726, 1 )
 font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=9]
@@ -77,14 +77,12 @@ font_data = ExtResource( 2 )
 [sub_resource type="DynamicFont" id=10]
 size = 100
 outline_size = 5
-outline_color = Color( 0.568627, 0.0313726, 0.0313726, 1 )
+outline_color = Color( 0.0313726, 0.501961, 0.0313726, 1 )
 font_data = ExtResource( 2 )
 
 [node name="Visibility_Control_Main_Menu" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = 896.0
-margin_bottom = 480.0
 script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -243,36 +241,42 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Visibility_Control_Main_Menu_Buttons" type="Control" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
+[node name="Visibility_Control_Main_Menu_Buttons" type="HBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -525.5
+margin_top = -142.0
+margin_right = 525.5
+grow_horizontal = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_constants/separation = 0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Start_Game_Button" type="Button" parent="Visibility_Control_Main_Menu_Buttons"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = 1248.22
-margin_top = 915.0
-margin_right = 1898.22
-margin_bottom = 1057.0
+[node name="Exit_Button" type="Button" parent="Visibility_Control_Main_Menu_Buttons"]
+margin_right = 237.0
+margin_bottom = 142.0
 focus_mode = 0
+size_flags_horizontal = 2
+size_flags_vertical = 0
 custom_fonts/font = SubResource( 8 )
 enabled_focus_mode = 0
-text = "Start"
+text = "Exit"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Configure_Button" type="Button" parent="Visibility_Control_Main_Menu_Buttons"]
-margin_left = 617.385
-margin_top = 935.0
-margin_right = 1267.39
-margin_bottom = 1077.0
+margin_left = 237.0
+margin_right = 760.0
+margin_bottom = 142.0
 focus_mode = 0
+size_flags_horizontal = 0
+size_flags_vertical = 0
 custom_fonts/font = SubResource( 9 )
 enabled_focus_mode = 0
 text = "Configure"
@@ -280,14 +284,16 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Exit_Button" type="Button" parent="Visibility_Control_Main_Menu_Buttons"]
-margin_top = 935.0
-margin_right = 616.0
-margin_bottom = 1077.0
+[node name="Start_Game_Button" type="Button" parent="Visibility_Control_Main_Menu_Buttons"]
+margin_left = 760.0
+margin_right = 1051.0
+margin_bottom = 142.0
 focus_mode = 0
+size_flags_horizontal = 0
+size_flags_vertical = 0
 custom_fonts/font = SubResource( 10 )
 enabled_focus_mode = 0
-text = "Exit"
+text = "Start"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -295,5 +301,5 @@ __meta__ = {
 [connection signal="finished" from="AudioStreamPlayer" to="." method="_On_AudioStreamPlayer_Finished"]
 [connection signal="animation_finished" from="Header_Slide_In_AnimationPlayer" to="." method="_On_Header_Slide_In_AnimationPlayer_Animation_Finished"]
 [connection signal="hide" from="Prompt_User_WindowDialog" to="." method="_On_Prompt_User_WindowDialog_Hide"]
-[connection signal="pressed" from="Visibility_Control_Main_Menu_Buttons/Start_Game_Button" to="." method="_On_Start_Game_Button_Pressed"]
 [connection signal="pressed" from="Visibility_Control_Main_Menu_Buttons/Exit_Button" to="." method="_On_Exit_Button_Pressed"]
+[connection signal="pressed" from="Visibility_Control_Main_Menu_Buttons/Start_Game_Button" to="." method="_On_Start_Game_Button_Pressed"]
