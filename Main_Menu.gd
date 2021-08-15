@@ -19,6 +19,8 @@ func _On_Exit_Button_Pressed():
 	#If Anyone Ever Wants To Exit.
 	get_tree().quit()
 
+func _on_Configure_Button_Pressed():
+	get_node("Configuration_WindowDialog").show()
 
 
 func _On_Prompt_User_WindowDialog_Hide():
@@ -127,6 +129,11 @@ func _On_Music_Intro_Delay_Timer_Timeout():
 func _On_Header_Slide_In_AnimationPlayer_Animation_Finished(Header_Slide_In):
 	#When header slide finished, Insert Version Information.
 	get_node("Top_Panel/Visibility_Control_Version_Info").show()
+
+
+
+
+
 
 
 
