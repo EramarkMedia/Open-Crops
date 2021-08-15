@@ -102,12 +102,13 @@ func _ready():
 	#Delay Intro Music Slightly.
 	get_node("Music_Intro_Delay_Timer").start(1)
 	
-	#Dont Think There Is Any Use Of Preloading With The Voxel Terrain, Atleast Not For Load Time?.
+	#Preload game enviroment.
 	game_enviroment = preload("res://Scenes/Game_Enviroment/Open_Crops_Env.tscn").instance()
 
 
 
 func _On_AudioStreamPlayer_Finished():
+	#If main menu is vibisble, loop theme song.
 	if ($".").is_visible():
 		get_node("AudioStreamPlayer").play()
 	
@@ -124,7 +125,7 @@ func _On_Music_Intro_Delay_Timer_Timeout():
 
 
 func _On_Header_Slide_In_AnimationPlayer_Animation_Finished(Header_Slide_In):
-	#Insert Version Information.
+	#When header slide finished, Insert Version Information.
 	get_node("Top_Panel/Visibility_Control_Version_Info").show()
 
 
