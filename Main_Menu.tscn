@@ -98,13 +98,13 @@ __meta__ = {
 }
 
 [node name="Top_Panel" type="Panel" parent="."]
-margin_left = 204.897
-margin_top = 0.889389
-margin_right = 1954.9
-margin_bottom = 204.889
+anchor_left = 0.106717
+anchor_top = 0.000823508
+anchor_right = 0.997342
+anchor_bottom = 0.189712
 custom_styles/panel = SubResource( 1 )
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_use_anchors_": true
 }
 
 [node name="Open_Crops_Header" type="RichTextLabel" parent="Top_Panel"]
@@ -242,27 +242,20 @@ __meta__ = {
 }
 
 [node name="Visibility_Control_Main_Menu_Buttons" type="HBoxContainer" parent="."]
-anchor_left = 0.5
 anchor_top = 1.0
-anchor_right = 0.5
+anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -525.5
 margin_top = -142.0
-margin_right = 525.5
-grow_horizontal = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
 custom_constants/separation = 0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Exit_Button" type="Button" parent="Visibility_Control_Main_Menu_Buttons"]
-margin_right = 237.0
+margin_right = 640.0
 margin_bottom = 142.0
 focus_mode = 0
-size_flags_horizontal = 2
-size_flags_vertical = 0
+size_flags_horizontal = 3
 custom_fonts/font = SubResource( 8 )
 enabled_focus_mode = 0
 text = "Exit"
@@ -271,12 +264,11 @@ __meta__ = {
 }
 
 [node name="Configure_Button" type="Button" parent="Visibility_Control_Main_Menu_Buttons"]
-margin_left = 237.0
-margin_right = 760.0
+margin_left = 640.0
+margin_right = 1280.0
 margin_bottom = 142.0
 focus_mode = 0
-size_flags_horizontal = 0
-size_flags_vertical = 0
+size_flags_horizontal = 3
 custom_fonts/font = SubResource( 9 )
 enabled_focus_mode = 0
 text = "Configure"
@@ -285,12 +277,11 @@ __meta__ = {
 }
 
 [node name="Start_Game_Button" type="Button" parent="Visibility_Control_Main_Menu_Buttons"]
-margin_left = 760.0
-margin_right = 1051.0
+margin_left = 1280.0
+margin_right = 1920.0
 margin_bottom = 142.0
 focus_mode = 0
-size_flags_horizontal = 0
-size_flags_vertical = 0
+size_flags_horizontal = 3
 custom_fonts/font = SubResource( 10 )
 enabled_focus_mode = 0
 text = "Start"
