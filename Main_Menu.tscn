@@ -1,11 +1,13 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Scenes/Main_menu/Logos/Open-Crops/Open-Crops_Logo.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/Main_menu/Fonts/Open_Crops.otf" type="DynamicFontData" id=2]
 [ext_resource path="res://Scenes/Main_menu/Soundtrack/Viilofarmi_Soundtrack.wav" type="AudioStream" id=3]
 [ext_resource path="res://Main_Menu.gd" type="Script" id=4]
 [ext_resource path="res://Scenes/Main_menu/Icons/Hox.png" type="Texture" id=5]
+[ext_resource path="res://Scenes/Main_menu/Icons/Configuration/Arrow_Right.png" type="Texture" id=6]
 [ext_resource path="res://Scenes/Main_menu/Icons/Select_Button_Texture.png" type="Texture" id=7]
+[ext_resource path="res://Scenes/Main_menu/Icons/Configuration/Selection_Arrow.png" type="Texture" id=8]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.301961, 0.298039, 0.321569, 1 )
@@ -60,6 +62,14 @@ font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=7]
 size = 20
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=11]
+size = 30
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=12]
+size = 30
 font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=8]
@@ -241,6 +251,61 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Configuration_WindowDialog" type="WindowDialog" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -300.0
+margin_top = -320.0
+margin_right = 300.0
+margin_bottom = 380.0
+window_title = "Configuration"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Configuration_WindowDialog"]
+margin_left = 10.0
+margin_top = 40.0
+margin_right = 590.0
+margin_bottom = 660.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Configuration_WindowDialog/VBoxContainer"]
+margin_right = 580.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 580, 50 )
+
+[node name="Select_Country_Column" type="RichTextLabel" parent="Configuration_WindowDialog/VBoxContainer/HBoxContainer"]
+margin_right = 318.0
+margin_bottom = 50.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/normal_font = SubResource( 11 )
+text = "Select Country"
+
+[node name="TextureButton" type="TextureButton" parent="Configuration_WindowDialog/VBoxContainer/HBoxContainer"]
+margin_left = 322.0
+margin_right = 386.0
+margin_bottom = 50.0
+texture_normal = ExtResource( 8 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Configuration_WindowDialog/VBoxContainer/HBoxContainer"]
+margin_left = 390.0
+margin_right = 511.0
+margin_bottom = 50.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.38
+custom_fonts/normal_font = SubResource( 12 )
+text = "Finland"
+
+[node name="TextureButton2" type="TextureButton" parent="Configuration_WindowDialog/VBoxContainer/HBoxContainer"]
+margin_left = 515.0
+margin_right = 579.0
+margin_bottom = 50.0
+texture_normal = ExtResource( 6 )
+
 [node name="Visibility_Control_Main_Menu_Buttons" type="HBoxContainer" parent="."]
 anchor_top = 1.0
 anchor_right = 1.0
@@ -292,5 +357,7 @@ __meta__ = {
 [connection signal="finished" from="AudioStreamPlayer" to="." method="_On_AudioStreamPlayer_Finished"]
 [connection signal="animation_finished" from="Header_Slide_In_AnimationPlayer" to="." method="_On_Header_Slide_In_AnimationPlayer_Animation_Finished"]
 [connection signal="hide" from="Prompt_User_WindowDialog" to="." method="_On_Prompt_User_WindowDialog_Hide"]
+[connection signal="hide" from="Configuration_WindowDialog" to="." method="_on_Configuration_WindowDialog_hide"]
 [connection signal="pressed" from="Visibility_Control_Main_Menu_Buttons/Exit_Button" to="." method="_On_Exit_Button_Pressed"]
+[connection signal="pressed" from="Visibility_Control_Main_Menu_Buttons/Configure_Button" to="." method="_on_Configure_Button_Pressed"]
 [connection signal="pressed" from="Visibility_Control_Main_Menu_Buttons/Start_Game_Button" to="." method="_On_Start_Game_Button_Pressed"]
