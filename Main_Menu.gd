@@ -1,5 +1,7 @@
 extends Control
 
+
+
 #Game Enviroment Loading.
 var game_enviroment
 
@@ -22,13 +24,14 @@ func _On_Exit_Button_Pressed():
 func _on_Configure_Button_Pressed():
 	get_node("Configuration_WindowDialog").show()
 
-
+#Reset labels in prompt window.
 func _On_Prompt_User_WindowDialog_Hide():
 	reset_user_prompt_window("","","","")
 
+#Unsure if bbcode should be used for reset as well ?.
 func reset_user_prompt_window(var window_header,var header_label,var footer_label,var user_action):
 	#Re-Set The Window Header Label.
-	get_node("Prompt_User_WindowDialog/Window_Header_Label").text = window_header
+	get_node("Prompt_User_WindowDialog").window_title = window_header
 	#Re-Set The Header Label.
 	get_node("Prompt_User_WindowDialog/Prompt_User_Window_Header_Label").text = header_label
 	#Re-Set The Footer Label.
@@ -38,19 +41,18 @@ func reset_user_prompt_window(var window_header,var header_label,var footer_labe
 	#Stop Supercool Hoax Symbol Animation & Reset.
 	get_node("Prompt_User_WindowDialog/Hox_Symbol_Blink_Animation").stop(true)
 
-#Draw Window.
-# Window Header, Header Label, Footer Label, User Action.
+#Draw User Prompt Window.
 func display_user_prompt_window(var window_header,var header_label,var footer_label,var user_action):
 	
-	#Draw User Prompt Window.
+	#Show User Prompt Window.
 	get_node("Prompt_User_WindowDialog").show()
 	
 	#Set The Window Header Label.
-	get_node("Prompt_User_WindowDialog/Window_Header_Label").text = window_header
+	get_node("Prompt_User_WindowDialog").window_title = window_header
 	#Set The Header Label.
-	get_node("Prompt_User_WindowDialog/Prompt_User_Window_Header_Label").text = header_label
+	get_node("Prompt_User_WindowDialog/Prompt_User_Window_Header_Label").bbcode_text = "[center]"+header_label+"[/center]"
 	#Set The Footer Label.
-	get_node("Prompt_User_WindowDialog/Prompt_User_Window_Footer_Label").text = footer_label
+	get_node("Prompt_User_WindowDialog/Prompt_User_Window_Footer_Label").bbcode_text = "[center]"+footer_label+"[/center]"
 	
 	if window_header == "Error":
 		#Display Hox Symbol.
@@ -58,12 +60,15 @@ func display_user_prompt_window(var window_header,var header_label,var footer_la
 		#Also
 		#Select & Start Our Supercool Hox Animation.
 		get_node("Prompt_User_WindowDialog/Hox_Symbol_Blink_Animation").play("Hox_Symbol_Blink") 
+	elif window_header == "Warning":
+		#Display Hox Symbol.
+		get_node("Prompt_User_WindowDialog/Visibility_Control_Hox_Symbol").show()
+		#Also
+		#Select & Start Our Supercool Hox Animation.
+		get_node("Prompt_User_WindowDialog/Hox_Symbol_Blink_Animation").play("Hox_Symbol_Blink")
 	
 	if user_action == "select":
 		get_node("Prompt_User_WindowDialog/Visibility_Control_Selection_Buttons").show()
-
-
-
 
 
 func check_asset_essentials():
@@ -75,14 +80,9 @@ func check_asset_essentials():
 	#Do We Have The New Assets Library?
 	check_essentials = Directory.new().dir_exists("res://Assets/")
 	
-	
-	
 	if !check_essentials:
 		#If Not, Notify User.
 		display_user_prompt_window("Error","Asset Library Missing","Add Library & Download Content","select")
-		#	print("Do HTTP-Request In Future")
-		
-		
 		
 	if check_essentials:
 		#We Got The Assets Folder.
@@ -110,7 +110,7 @@ func _ready():
 
 
 func _On_AudioStreamPlayer_Finished():
-	#If main menu is vibisble, loop theme song.
+	#If Main Menu Is Vibisble, Loop Theme Song.
 	if ($".").is_visible():
 		get_node("AudioStreamPlayer").play()
 	
@@ -124,21 +124,7 @@ func _On_Music_Intro_Delay_Timer_Timeout():
 
 
 
-
-
 func _On_Header_Slide_In_AnimationPlayer_Animation_Finished(Header_Slide_In):
 	#When header slide finished, Insert Version Information.
 	get_node("Top_Panel/Visibility_Control_Version_Info").show()
-
-
-
-
-
-
-
-
-
-
-
-
 
