@@ -5,9 +5,6 @@ extends Control
 #Game Enviroment Loading.
 var game_enviroment
 
-#Assets Status Query.
-var check_essentials
-
 
 #Events
 
@@ -74,26 +71,30 @@ func display_user_prompt_window(var window_header,var header_label,var footer_la
 func check_asset_essentials():
 	#Check If We Have Assets Folder Present.
 	#If Not, Lets Try To Do Something About it.
-	#Maybe handle over HTTPRequest in future ?
 	
 	
 	#Do We Have The New Assets Library?
-	check_essentials = Directory.new().dir_exists("res://Assets/")
-	
-	if !check_essentials:
+	var check_assets_dir = Directory.new().dir_exists("res://Assets/")
+	if !check_assets_dir:
 		#If Not, Notify User.
-		display_user_prompt_window("Error","Asset Library Missing","Add Library & Download Content","select")
+		display_user_prompt_window("Error","Asset Library Missing","Add Library & Download Content?","select")
+		#Do HttpRequest In Future.
 		
-	if check_essentials:
+	if check_assets_dir:
 		#We Got The Assets Folder.
-		#Launch Game Enviroment & Handle Essentials For That.
+		#Check For Maps Folder As Next.
+		var check_map_dir = Directory.new().dir_exists("res://Assets/Maps")
+		if !check_map_dir:
+			display_user_prompt_window("Warning","Maps Folder Missing","Add Library & Re-Download Content?","Select")
 		
-		#Hide Main Menu
-		get_node(".").hide()
-		#Sadly, Stop Our Superawesome Intro Song.
-		get_node("AudioStreamPlayer").stop()
-		#Add Game Enviroment Scene.
-		add_child(game_enviroment)
+		#Launch Game Enviroment & Handle Essentials For That.
+		else:
+			#Hide Main Menu
+			get_node(".").hide()
+			#Sadly, Stop Our Superawesome Intro Song.
+			get_node("AudioStreamPlayer").stop()
+			#Add Game Enviroment Scene.
+			add_child(game_enviroment)
 
 
 # Called when the node enters the scene tree for the first time.
