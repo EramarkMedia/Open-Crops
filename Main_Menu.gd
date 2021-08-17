@@ -67,7 +67,7 @@ func display_user_prompt_window(var window_header,var header_label,var footer_la
 		#Select & Start Our Supercool Hox Animation.
 		get_node("Prompt_User_WindowDialog/Hox_Symbol_Blink_Animation").play("Hox_Symbol_Blink")
 	
-	if user_action == "select":
+	if user_action == "Select":
 		get_node("Prompt_User_WindowDialog/Visibility_Control_Selection_Buttons").show()
 
 
