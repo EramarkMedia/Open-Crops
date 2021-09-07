@@ -23,7 +23,6 @@
     <h3>Building from source.</h3>
     <br><p>Linux</p>
     <a href="https://github.com/EramarkMedia/Open-Crops/blob/master/Docs/Workflow/Compiling_From_Source/Linux/Building_From_Source_Linux.pdf">Building On Linux</a>
-    
     <br><br><p>Windows</p>
     <p>Building on Windows, is currently undergoing work, and will be announced when available</p>
    </building>
