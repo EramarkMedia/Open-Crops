@@ -15,6 +15,8 @@
       <li>Finishing heightmap selections in main menu, as well as error handling for these. </li>
       <li>Asset sync, over the interweb.</li>
       <li>Importing primitive buildings, from GeoJSON file.</li>
+      <li>Implementing weather / climate to the enviroment.</li>
+      <li>Introducing some of the vehicles being WIP.</li>
       <li>Improving presence on social media platforms / website.</li>
      </ul> 
     </contributions>
@@ -30,11 +32,11 @@
    
    <contact>
     <h3>Contact.</h3>
-    <br><p>Open-Crops has got a Discord server <a href="https://discord.gg/VCgGnSdBQ7">Open-Crops Discord</a></p>
-    <p>You are welcome aboard, to keep up with what is currently going on, as well as for general discussion, around the project.</p>
+    <br><p>Open-Crops has got a Discord server: <a href="https://discord.gg/VCgGnSdBQ7">Open-Crops Discord</a></p>
+    <p>You are welcome aboard, to keep track of the latest news, as well as for general discussion, around the project.</p>
    </contact>
    
    <license>
-    <h3>Open-Crops is licensed under the permissive MIT-License</h3>
-    <a href="https://opensource.org/licenses/MIT">MIT-License Details</a>
+    <br><h3>Open-Crops is licensed under the permissive MIT-License</h3>
+    <a href="https://opensource.org/licenses/MIT">MIT-License</a>
    </license>
