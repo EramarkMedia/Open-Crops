@@ -10,7 +10,7 @@
     <p>No matter if you are a Programmer, 3D-Designer, Pixel-Art Artist, Sound Engineer, Or Enthusiast.</p>
     <p>There is a task for you, to get engaged with, and help with the development.</p>
     
-    <br> <p>Contributions to the source code are welcome, to the -dev branch.</p>
+    <p>Contributions to the source code are welcome, to the -dev branch.</p>
     
     <br> <p>Current milestones for the project are</p>
      <ul>
