@@ -12,17 +12,27 @@
     <br><p>Contributions to the source code are welcome, to the -dev branch.</p>
     <br> <p>Current milestones for the project are</p>
      <ul>
-      <li>Finishing heightmap selections in Main Menu, as well as error handling for these. </li>
+      <li>Finishing heightmap selections in main menu, as well as error handling for these. </li>
       <li>Asset sync, over the interweb.</li>
       <li>Importing primitive buildings, from GeoJSON file.</li>
       <li>Improving presence on social media platforms / website.</li>
      </ul> 
     </contributions>
-    <contact>
-    <br><p>Open-Crops has got a Discord server <a href="https://discord.gg/B3ZAQ23TZK/">Open-Crops Discord</a></p>
+   
+   <building>
+    <h3>Building from source</h3>
+    
+    <br><p>Linux</p>
+    <a href="https://github.com/EramarkMedia/Open-Crops/blob/master/Docs/Workflow/Compiling_From_Source/Linux/Building_From_Source_Linux.pdf">Building On Linux</a>
+   </building>
+    
+   
+   <contact>
+    <br><p>Open-Crops has got a Discord server <a href="https://discord.gg/VCgGnSdBQ7">Open-Crops Discord</a></p>
     <p>You are welcome aboard, to keep up with what is currently going on, as well as for general discussion, around the project.</p>
-    </contact>
-    <license>
+   </contact>
+   
+   <license>
     <h3>Open-Crops is licensed under the permissive MIT-License</h3>
     <a href="https://opensource.org/licenses/MIT">MIT-License Details</a>
-    </license>
+   </license>
