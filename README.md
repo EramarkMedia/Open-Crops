@@ -29,7 +29,7 @@
     
    
    <contact>
-    <br><h3>Contact</h3>
+    <h3>Contact</h3>
     <br><br><p>Open-Crops has got a Discord server <a href="https://discord.gg/VCgGnSdBQ7">Open-Crops Discord</a></p>
     <p>You are welcome aboard, to keep up with what is currently going on, as well as for general discussion, around the project.</p>
    </contact>
