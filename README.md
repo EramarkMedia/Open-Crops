@@ -23,10 +23,13 @@
     <h3>Building from source.</h3>
     <br><p>Linux</p>
     <a href="https://github.com/EramarkMedia/Open-Crops/blob/master/Docs/Workflow/Compiling_From_Source/Linux/Building_From_Source_Linux.pdf">Building On Linux</a>
+    <br><p>Windows</p>
+    <p>Building on Windows, is currently undergoing work, and will be announced when available</p>
    </building>
     
    
    <contact>
+    <br><h3>Contact</h3>
     <br><br><p>Open-Crops has got a Discord server <a href="https://discord.gg/VCgGnSdBQ7">Open-Crops Discord</a></p>
     <p>You are welcome aboard, to keep up with what is currently going on, as well as for general discussion, around the project.</p>
    </contact>
