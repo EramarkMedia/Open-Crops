@@ -10,6 +10,7 @@
     <p>No matter if you are a Programmer, 3D-Designer, Pixel-Art Artist, Sound Engineer, Or Enthusiast.</p>
     <p>There is a task for you, to get engaged with, and help with the development.</p>
     <br><p>Contributions to the source code are welcome, to the -dev branch.</p>
+    <p>Submit a issue, or get in touch on our Discord server to let us know what you want to work on / change.</p>
     <br> <p>Current milestones for the project are</p>
      <ul>
       <li>Finishing heightmap selections in main menu, as well as error handling for these. </li>
