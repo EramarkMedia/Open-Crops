@@ -13,9 +13,9 @@ Open Source Heavy Machinery Enviroment developed with Godot.
 How to contribute?
 ##################
 
-No matter if you are a Programmer, 3D-Designer, Pixel-Art Artist, Sound Engineer or Enthusiast. There is a task for you, to get engaged with, and help with the development.
+No matter if you are a Programmer, 3D-Designer, Pixel-Art Artist, Sound Engineer, Photographer or Enthusiast. There is a task for you, to get engaged with, and help with the development.
 
-Submit an issue, or get in touch on our `Discord <https://discord.gg/VCgGnSdBQ7>`__ server to let us know what you want to work on / change.
+Submit an issue, open a pull request, or get in touch on our `Discord <https://discord.gg/VCgGnSdBQ7>`__ server to let us know what you want to work on / change.
 
 Current milestones
 ##################
