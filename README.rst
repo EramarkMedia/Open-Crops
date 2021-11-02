@@ -35,10 +35,7 @@ Linux
 
 `Linux Instructions <Docs/Workflow/Compiling_From_Source/Linux/Building_From_Source_Linux.pdf>`__
 
-Windows
--------
 
-Building on Windows, is currently undergoing work, and will be announced when available.
 
 Contact
 #######
