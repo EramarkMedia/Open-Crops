@@ -64,7 +64,7 @@ font_data = ExtResource( 2 )
 size = 20
 font_data = ExtResource( 2 )
 
-[sub_resource type="DynamicFont" id=12]
+[sub_resource type="DynamicFont" id=8]
 size = 30
 font_data = ExtResource( 2 )
 
@@ -234,7 +234,6 @@ __meta__ = {
 }
 
 [node name="Configuration_WindowDialog" type="WindowDialog" parent="."]
-visible = true
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -278,7 +277,7 @@ margin_right = 62.5
 margin_bottom = 44.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
-custom_fonts/normal_font = SubResource( 12 )
+custom_fonts/normal_font = SubResource( 8 )
 bbcode_enabled = true
 bbcode_text = "[center]Maps[/center]"
 text = "Maps"
