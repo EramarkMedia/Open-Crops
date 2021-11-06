@@ -4,15 +4,15 @@
 [ext_resource path="res://Scenes/Game_Enviroment/Terrain Material.tres" type="Material" id=2]
 [ext_resource path="res://Scenes/Game_Enviroment/Spatial.gd" type="Script" id=3]
 
-[sub_resource type="TileGenerator" id=3]
+[sub_resource type="TileGenerator" id=1]
 
-[sub_resource type="VoxelStreamRegionFiles" id=4]
-fallback_stream = SubResource( 3 )
+[sub_resource type="VoxelStreamRegionFiles" id=2]
+fallback_stream = SubResource( 1 )
 save_fallback_output = false
 directory = "user://world"
 lod_count = 4
 
-[sub_resource type="StyleBoxFlat" id=5]
+[sub_resource type="StyleBoxFlat" id=3]
 bg_color = Color( 0.324, 0.72, 0.357, 0.305882 )
 border_width_left = 4
 border_width_top = 4
@@ -53,7 +53,7 @@ script = ExtResource( 1 )
 slider = NodePath("../Panel/VBoxContainer/HBoxContainer4/HSlider")
 
 [node name="VoxelLodTerrain" type="VoxelLodTerrain" parent="."]
-stream = SubResource( 4 )
+stream = SubResource( 2 )
 view_distance = 1200
 viewer_path = NodePath("../Camera")
 material = ExtResource( 2 )
@@ -72,7 +72,7 @@ margin_left = 20.0
 margin_top = 20.0
 margin_right = 460.0
 margin_bottom = 170.0
-custom_styles/panel = SubResource( 5 )
+custom_styles/panel = SubResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
