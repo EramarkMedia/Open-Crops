@@ -83,7 +83,7 @@ func check_asset_essentials():
 	if check_assets_dir:
 		#We Got The Assets Folder.
 		#Check For Maps Folder As Next.
-		var check_map_dir = Directory.new().dir_exists("res://Assets/Maps")
+		var check_map_dir = Directory.new().dir_exists("res://Assets/Terrain")
 		if !check_map_dir:
 			display_user_prompt_window("Warning","Maps Folder Missing","Add Library & Re-Download Content?","Select")
 		

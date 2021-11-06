@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Scenes/Game_Enviroment/Camera.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Game_Enviroment/Terrain Material.tres" type="Material" id=2]
-[ext_resource path="res://Scenes/Game_Enviroment/Spatial.gd" type="Script" id=3]
+[ext_resource path="res://Scenes/Game_Enviroment/Scripts/Game_Enviroment.gd" type="Script" id=3]
 
 [sub_resource type="TileGenerator" id=1]
 
@@ -24,7 +24,7 @@ corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
-[node name="Spatial" type="Spatial"]
+[node name="Game_Enviroment" type="Spatial"]
 script = ExtResource( 3 )
 __meta__ = {
 "_editor_description_": ""
@@ -44,13 +44,14 @@ autostart = true
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
 transform = Transform( 1, 0, 0, 0, -0.817668, 0.57569, 0, -0.57569, -0.817668, 0, 0, 0 )
+light_color = Color( 1, 0.988235, 0.988235, 1 )
 light_energy = 0.7
 
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 64, 0 )
-far = 1200.0
+far = 800.0
 script = ExtResource( 1 )
-slider = NodePath("../Panel/VBoxContainer/HBoxContainer4/HSlider")
+slider = NodePath("../../Game_Enviroment/Panel/VBoxContainer/HBoxContainer4/HSlider")
 
 [node name="VoxelLodTerrain" type="VoxelLodTerrain" parent="."]
 stream = SubResource( 2 )
@@ -63,8 +64,7 @@ __meta__ = {
 Texture North West: Q4111E
 Texture North East: Q4111G
 Texture South West: P4222F
-Texture South East: P4222H
-"
+Texture South East: P4222H"
 }
 
 [node name="Panel" type="Panel" parent="."]

@@ -8,8 +8,6 @@ export(NodePath) var geocheck_label
 export(NodePath) var elevation_label
 
 
-
-
 var etrs89proj = ETRS89Projection.new()
 
 func round_tenths(f):
@@ -23,8 +21,6 @@ func deg2dms(deg):
 	var mrem = ms - m
 	var ss = mrem * 60
 	return str(d,"°",m,"'",ss,'"')
-
-
 
 
 
@@ -46,7 +42,6 @@ func _process(delta):
 	#get_node(elevation_label).text = str("Elevation: ", tile_generator.get_elevation(camera.transform.origin.x,camera.transform.origin.z))
 
 func apply_image_as_height_texture(image, location):
-	#var north_west_height_map = preload("res://assets/Q4111E.tif")
 	var height_texture = ImageTexture.new()
 	height_texture.create_from_image(image)
 	$VoxelLodTerrain.material.set_shader_param(location, height_texture)
@@ -54,13 +49,13 @@ func apply_image_as_height_texture(image, location):
 func _ready():
 	var tile_generator = $VoxelLodTerrain.stream.fallback_stream
 	tile_generator.set_cell(-1,-1,"res://Assets/Terrain/Heightmaps/Q4111E.tif")
-	apply_image_as_height_texture(preload("res://Assets/Terrain/Heightmaps/Q4111E.tif"), "height_north_west")
+	apply_image_as_height_texture(load("res://Assets/Terrain/Heightmaps/Q4111E.tif"), "height_north_west")
 	tile_generator.set_cell( 0,-1,"res://Assets/Terrain/Heightmaps/Q4111G.tif")
-	apply_image_as_height_texture(preload("res://Assets/Terrain/Heightmaps/Q4111G.tif"), "height_north_east")
+	apply_image_as_height_texture(load("res://Assets/Terrain/Heightmaps/Q4111G.tif"), "height_north_east")
 	tile_generator.set_cell(-1, 0,"res://Assets/Terrain/Heightmaps/P4222F.tif")
-	apply_image_as_height_texture(preload("res://Assets/Terrain/Heightmaps/P4222F.tif"), "height_south_west")
+	apply_image_as_height_texture(load("res://Assets/Terrain/Heightmaps/P4222F.tif"), "height_south_west")
 	tile_generator.set_cell( 0, 0,"res://Assets/Terrain/Heightmaps/P4222H.tif")
-	apply_image_as_height_texture(preload("res://Assets/Terrain/Heightmaps/P4222H.tif"), "height_south_east")
+	apply_image_as_height_texture(load("res://Assets/Terrain/Heightmaps/P4222H.tif"), "height_south_east")
 
 func _on_Timer_timeout():
 	var camera = $Camera
@@ -85,8 +80,3 @@ func _on_Timer2_timeout():
 	var camera = $Camera
 	var tile_generator = $VoxelLodTerrain.stream.fallback_stream
 	get_node(elevation_label).text = str("Elevation:", tile_generator.get_elevation(camera.transform.origin.x,camera.transform.origin.z))
-
-
-
-
-
