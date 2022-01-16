@@ -1,18 +1,29 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Scenes/Game_Enviroment/Camera.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Game_Enviroment/Terrain Material.tres" type="Material" id=2]
 [ext_resource path="res://Scenes/Game_Enviroment/Scripts/Game_Enviroment.gd" type="Script" id=3]
+[ext_resource path="res://Scenes/Main_menu/Fonts/Open_Crops.otf" type="DynamicFontData" id=4]
+[ext_resource path="res://Scenes/Main_menu/Fonts/Tahoma.TTF" type="DynamicFontData" id=5]
+[ext_resource path="res://Scenes/Game_Enviroment/Scripts/Dev_Console.gd" type="Script" id=6]
 
-[sub_resource type="TileGenerator" id=1]
+[sub_resource type="ProceduralSky" id=1]
+sun_color = Color( 0.94902, 0.921569, 0.831373, 1 )
 
-[sub_resource type="VoxelStreamRegionFiles" id=2]
-fallback_stream = SubResource( 1 )
+[sub_resource type="Environment" id=2]
+background_mode = 2
+background_sky = SubResource( 1 )
+ambient_light_energy = 0.7
+
+[sub_resource type="TileGenerator" id=3]
+
+[sub_resource type="VoxelStreamRegionFiles" id=4]
+fallback_stream = SubResource( 3 )
 save_fallback_output = false
 directory = "user://world"
 lod_count = 4
 
-[sub_resource type="StyleBoxFlat" id=3]
+[sub_resource type="StyleBoxFlat" id=5]
 bg_color = Color( 0.324, 0.72, 0.357, 0.305882 )
 border_width_left = 4
 border_width_top = 4
@@ -23,6 +34,25 @@ corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
+
+[sub_resource type="DynamicFont" id=6]
+size = 50
+outline_size = 2
+outline_color = Color( 0.00784314, 0.00784314, 0.00784314, 1 )
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 15
+font_data = ExtResource( 5 )
+
+[sub_resource type="Theme" id=8]
+default_font = SubResource( 7 )
+
+[sub_resource type="StyleBoxFlat" id=9]
+bg_color = Color( 0.301961, 0.298039, 0.321569, 0.588235 )
+
+[sub_resource type="StyleBoxFlat" id=10]
+bg_color = Color( 0, 0, 0, 0.568627 )
 
 [node name="Game_Enviroment" type="Spatial"]
 script = ExtResource( 3 )
@@ -36,16 +66,14 @@ geocords_label = NodePath("Panel/VBoxContainer/HBoxContainer/VBoxContainer/GeoCo
 geocheck_label = NodePath("Panel/VBoxContainer/HBoxContainer/VBoxContainer/GeoCheck")
 elevation_label = NodePath("Panel/VBoxContainer/ElevationLabel")
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 2 )
+
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.1
 
 [node name="Timer2" type="Timer" parent="."]
 autostart = true
-
-[node name="DirectionalLight" type="DirectionalLight" parent="."]
-transform = Transform( 1, 0, 0, 0, -0.817668, 0.57569, 0, -0.57569, -0.817668, 0, 0, 0 )
-light_color = Color( 1, 0.988235, 0.988235, 1 )
-light_energy = 0.7
 
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 64, 0 )
@@ -54,7 +82,7 @@ script = ExtResource( 1 )
 slider = NodePath("../../Game_Enviroment/Panel/VBoxContainer/HBoxContainer4/HSlider")
 
 [node name="VoxelLodTerrain" type="VoxelLodTerrain" parent="."]
-stream = SubResource( 2 )
+stream = SubResource( 4 )
 view_distance = 1200
 viewer_path = NodePath("../Camera")
 material = ExtResource( 2 )
@@ -68,11 +96,11 @@ Texture South East: P4222H"
 }
 
 [node name="Panel" type="Panel" parent="."]
-margin_left = 20.0
-margin_top = 20.0
-margin_right = 460.0
-margin_bottom = 170.0
-custom_styles/panel = SubResource( 3 )
+margin_left = 5.12271
+margin_top = 924.795
+margin_right = 445.123
+margin_bottom = 1074.8
+custom_styles/panel = SubResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -195,6 +223,56 @@ margin_top = 118.0
 margin_right = 420.0
 margin_bottom = 132.0
 text = "Elevation: 00.00"
+
+[node name="Info_Label" type="RichTextLabel" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -960.0
+margin_top = -70.0
+margin_right = 960.0
+custom_fonts/normal_font = SubResource( 6 )
+bbcode_enabled = true
+bbcode_text = "[center]Access the ingame console by pressing: F1[/center]"
+text = "Access the ingame console by pressing: F1"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Console_Container" type="VBoxContainer" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -960.0
+margin_right = 960.0
+margin_bottom = 150.0
+rect_min_size = Vector2( 1920, 150 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = SubResource( 8 )
+custom_constants/separation = -2
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Console_List" type="ItemList" parent="Console_Container"]
+margin_right = 1920.0
+margin_bottom = 150.0
+rect_min_size = Vector2( 1920, 150 )
+size_flags_horizontal = 0
+custom_styles/bg = SubResource( 9 )
+custom_colors/font_color = Color( 0.988235, 0.972549, 0.972549, 1 )
+
+[node name="Console_Entry" type="TextEdit" parent="Console_Container"]
+margin_top = 148.0
+margin_right = 1920.0
+margin_bottom = 173.0
+rect_min_size = Vector2( 1920, 25 )
+size_flags_horizontal = 0
+custom_styles/normal = SubResource( 10 )
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="timeout" from="Timer2" to="." method="_on_Timer2_timeout"]
 [connection signal="toggled" from="Panel/VBoxContainer/ClearButton" to="." method="_on_ClearButton_toggled"]
