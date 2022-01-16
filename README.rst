@@ -21,11 +21,12 @@ Current milestones
 ##################
 
 - Finishing heightmap selections in main menu, as well as error handling for these.
-- Asset sync, over the interweb.
+- Asset sync, over the interweb. ("Possibly WMS / WFS / OGC")
 - Importing primitive buildings, from GeoJSON file.
+- Importing primitive shapes for forest stands from GeoJSON file.
 - Implementing weather / climate to the enviroment.
-- Introducing some of the vehicles being WIP.
-- Improving presence on social media platforms / website.
+- Introducing some of the vehicles being WIP. (50% Done)
+- Improving presence on social media platforms / website. (50% Done)
 
 How to build from source?
 #########################
