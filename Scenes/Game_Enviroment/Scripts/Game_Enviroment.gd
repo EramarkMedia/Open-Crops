@@ -8,6 +8,8 @@ export(NodePath) var geocheck_label
 export(NodePath) var elevation_label
 
 
+
+
 var etrs89proj = ETRS89Projection.new()
 
 func round_tenths(f):
@@ -48,14 +50,36 @@ func apply_image_as_height_texture(image, location):
 
 func _ready():
 	var tile_generator = $VoxelLodTerrain.stream.fallback_stream
-	tile_generator.set_cell(-1,-1,"res://Assets/Terrain/Heightmaps/Q4111E.tif")
-	apply_image_as_height_texture(load("res://Assets/Terrain/Heightmaps/Q4111E.tif"), "height_north_west")
-	tile_generator.set_cell( 0,-1,"res://Assets/Terrain/Heightmaps/Q4111G.tif")
-	apply_image_as_height_texture(load("res://Assets/Terrain/Heightmaps/Q4111G.tif"), "height_north_east")
-	tile_generator.set_cell(-1, 0,"res://Assets/Terrain/Heightmaps/P4222F.tif")
-	apply_image_as_height_texture(load("res://Assets/Terrain/Heightmaps/P4222F.tif"), "height_south_west")
-	tile_generator.set_cell( 0, 0,"res://Assets/Terrain/Heightmaps/P4222H.tif")
-	apply_image_as_height_texture(load("res://Assets/Terrain/Heightmaps/P4222H.tif"), "height_south_east")
+	tile_generator.set_cell(-1,-1,"res://Maps/Finland/Terjarv/Heightmaps/Q4111E.tif")
+	apply_image_as_height_texture(load("res://Maps/Finland/Terjarv/Heightmaps/Q4111E.tif"), "height_north_west")
+	tile_generator.set_cell( 0,-1,"res://Maps/Finland/Terjarv/Heightmaps/Q4111G.tif")
+	apply_image_as_height_texture(load("res://Maps/Finland/Terjarv/Heightmaps/Q4111G.tif"), "height_north_east")
+	tile_generator.set_cell(-1, 0,"res://Maps/Finland/Terjarv/Heightmaps/P4222F.tif")
+	apply_image_as_height_texture(load("res://Maps/Finland/Terjarv/Heightmaps/P4222F.tif"), "height_south_west")
+	tile_generator.set_cell( 0, 0,"res://Maps/Finland/Terjarv/Heightmaps/P4222H.tif")
+	apply_image_as_height_texture(load("res://Maps/Finland/Terjarv/Heightmaps/P4222H.tif"), "height_south_east")
+	
+	
+	#Get Console container, with attached script, so we can call it.
+	var console = get_node("Console_Container")
+	#Call function in console script, to populate console with values.
+	console.populate_dev_console()
+	
+	#Display info label with keybind instructions on launch.
+	get_node("Info_Label").show()
+	#Delay for 5 sec and hide.
+	yield(get_tree().create_timer(5), "timeout")
+	get_node("Info_Label").hide()
+
+#Early....
+#Input Events.
+func _unhandled_input(event):
+	if event is InputEventKey:
+		if event.pressed and event.scancode == KEY_F1:
+			if $Console_Container.is_visible():
+				$Console_Container.hide()
+			else: $Console_Container.show()
+
 
 func _on_Timer_timeout():
 	var camera = $Camera
@@ -67,6 +91,7 @@ func _on_Timer_timeout():
 		vtool.channel = 1
 		vtool.mode = VoxelTool.MODE_REMOVE
 		vtool.do_sphere(camera.transform.origin, 1)
+
 
 
 func _on_ClearButton_toggled(button_pressed):
