@@ -77,7 +77,6 @@ func _on_Select_Heightmap_FileDialog_file_selected(path):
 			get_node("../../Maps_Configuration_WindowDialog/MarginContainer/GridContainer/Select_Heightmap_NE_Button/Select_Heightmap_NE_File_Label").bbcode_text = "[center]"+current_file+"[/center]"
 			#Change the color of styleboxflat to indicate everything is in order.
 			get_node("../../Maps_Configuration_WindowDialog/MarginContainer/GridContainer/Select_Heightmap_NE_Button/Select_Heightmap_NE_File_Label").modulate = Color(0.06,0.86,0.3)
-			#Call config file store function.
 			
 		elif which == "South-West":
 			#Assign path to variable.
