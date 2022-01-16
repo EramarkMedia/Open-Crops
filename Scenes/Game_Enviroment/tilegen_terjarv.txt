@@ -1,0 +1,8 @@
+tile_generator.set_cell(-1,-1,"res://Assets/Terrain/Heightmaps/Q4111E.tif")
+	apply_image_as_height_texture(load("res://Assets/Terrain/Heightmaps/Q4111E.tif"), "height_north_west")
+	tile_generator.set_cell( 0,-1,"res://Assets/Terrain/Heightmaps/Q4111G.tif")
+	apply_image_as_height_texture(load("res://Assets/Terrain/Heightmaps/Q4111G.tif"), "height_north_east")
+	tile_generator.set_cell(-1, 0,"res://Assets/Terrain/Heightmaps/P4222F.tif")
+	apply_image_as_height_texture(load("res://Assets/Terrain/Heightmaps/P4222F.tif"), "height_south_west")
+	tile_generator.set_cell( 0, 0,"res://Assets/Terrain/Heightmaps/P4222H.tif")
+	apply_image_as_height_texture(load("res://Assets/Terrain/Heightmaps/P4222H.tif"), "height_south_east")
