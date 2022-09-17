@@ -88,5 +88,5 @@ func Header_Slide_In_Animation_Finished(_Header_Slide_In):
 	#Destroy the header animationplayer, since we don't need it anymore.
 	header_anim_player.queue_free()
 	#Play Our Rocksolid Intro Music.
-	play_theme_music()
+	#play_theme_music()
 
