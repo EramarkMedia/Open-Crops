@@ -22,38 +22,38 @@ outline_size = 5
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 6 )
 
-[sub_resource type="StyleBoxFlat" id=12]
+[sub_resource type="StyleBoxFlat" id=4]
 bg_color = Color( 0.2, 0.2, 0.2, 1 )
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
-[sub_resource type="DynamicFont" id=13]
+[sub_resource type="DynamicFont" id=5]
 size = 30
 outline_size = 1
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 6 )
 
-[sub_resource type="DynamicFont" id=9]
+[sub_resource type="DynamicFont" id=6]
 size = 100
 outline_size = 5
 outline_color = Color( 0.568627, 0.0313726, 0.0313726, 1 )
 font_data = ExtResource( 6 )
 
-[sub_resource type="DynamicFont" id=10]
+[sub_resource type="DynamicFont" id=7]
 size = 100
 outline_size = 5
 outline_color = Color( 0.580392, 0.596078, 0.0627451, 1 )
 font_data = ExtResource( 6 )
 
-[sub_resource type="DynamicFont" id=11]
+[sub_resource type="DynamicFont" id=8]
 size = 100
 outline_size = 5
 outline_color = Color( 0.0313726, 0.501961, 0.0313726, 1 )
 font_data = ExtResource( 6 )
 
-[sub_resource type="DynamicFont" id=14]
+[sub_resource type="DynamicFont" id=9]
 size = 50
 outline_size = 1
 outline_color = Color( 0, 0, 0, 1 )
@@ -132,7 +132,7 @@ margin_left = -300.0
 margin_top = -320.0
 margin_right = 300.0
 margin_bottom = 380.0
-custom_styles/panel = SubResource( 12 )
+custom_styles/panel = SubResource( 4 )
 window_title = "Configuration"
 script = ExtResource( 2 )
 __meta__ = {
@@ -173,7 +173,7 @@ margin_top = 8.0
 margin_right = 100.0
 margin_bottom = 68.0
 rect_min_size = Vector2( 200, 60 )
-custom_fonts/normal_font = SubResource( 13 )
+custom_fonts/normal_font = SubResource( 5 )
 bbcode_enabled = true
 bbcode_text = "[center]Enviroment[/center]"
 text = "Enviroment"
@@ -196,7 +196,7 @@ margin_right = 640.0
 margin_bottom = 142.0
 focus_mode = 0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = SubResource( 6 )
 enabled_focus_mode = 0
 text = "Exit"
 __meta__ = {
@@ -209,7 +209,7 @@ margin_right = 1280.0
 margin_bottom = 142.0
 focus_mode = 0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 10 )
+custom_fonts/font = SubResource( 7 )
 enabled_focus_mode = 0
 text = "Configure"
 __meta__ = {
@@ -222,7 +222,7 @@ margin_right = 1920.0
 margin_bottom = 142.0
 focus_mode = 0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 11 )
+custom_fonts/font = SubResource( 8 )
 enabled_focus_mode = 0
 text = "Start"
 __meta__ = {
@@ -238,7 +238,7 @@ margin_left = -250.0
 margin_top = -40.0
 margin_right = 250.0
 margin_bottom = 40.0
-custom_fonts/normal_font = SubResource( 14 )
+custom_fonts/normal_font = SubResource( 9 )
 bbcode_enabled = true
 bbcode_text = "[center]Nice Slideshow Here ;)[/center]"
 text = "Nice Slideshow Here ;)"
