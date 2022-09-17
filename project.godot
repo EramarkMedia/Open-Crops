@@ -17,6 +17,7 @@ _global_script_class_icons={
 
 config/name="Open-Crops"
 run/main_scene="res://Scenes/Main_menu/Main_Menu.tscn"
+boot_splash/image="res://Open-Crops_Fullres.png"
 config/icon="res://Scenes/Main_menu/Logos/Open-Crops/Open-Crops_Logo.png"
 
 [display]
