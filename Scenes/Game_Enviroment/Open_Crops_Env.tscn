@@ -96,10 +96,10 @@ Texture South East: P4222H"
 }
 
 [node name="Panel" type="Panel" parent="."]
-margin_left = 5.12271
-margin_top = 924.795
-margin_right = 445.123
-margin_bottom = 1074.8
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -150.005
+margin_right = 440.0
 custom_styles/panel = SubResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
