@@ -20,6 +20,8 @@ Submit an issue, open a pull request, or get in touch on our `Discord <https://d
 Current milestones
 ##################
 
+- Finish implementing necessary parts of GDAL.
+- Port to Godot version 3.4.x and check out foliage solution.
 - Finishing heightmap selections in main menu, as well as error handling for these.
 - Asset sync, over the interweb. ("Possibly WMS / WFS / OGC")
 - Importing primitive buildings, from GeoJSON file.
@@ -38,7 +40,7 @@ Linux
 
 
 
-Contact
+Community
 #######
 
 You are welcome aboard, to keep track of the latest news, as well as for general discussion, around the project on our `Discord <https://discord.gg/VCgGnSdBQ7>`__ server.
@@ -46,4 +48,4 @@ You are welcome aboard, to keep track of the latest news, as well as for general
 License
 #######
 
-Open-Crops is licensed under the permissive `MIT License <License.md>`__.
+All content in this repository is licensed under the permissive `MIT License <License.md>`__.
