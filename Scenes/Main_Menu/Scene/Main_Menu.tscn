@@ -1,0 +1,57 @@
+[gd_scene load_steps=5 format=3 uid="uid://7q82dj35oabb"]
+
+[ext_resource type="Texture2D" uid="uid://b3ogyiebtfbni" path="res://Scenes/Main_Menu/Logos/Open-Crops_256.jpg" id="1_3tr2b"]
+[ext_resource type="Script" path="res://Scenes/Main_Menu/Scripts/Main_Menu.gd" id="1_emfbx"]
+[ext_resource type="FontFile" uid="uid://c2ugreleiu1cs" path="res://Scenes/Main_Menu/Fonts/Open_Crops.otf" id="2_h25p1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k5ics"]
+bg_color = Color(0.301961, 0.298039, 0.321569, 1)
+
+[node name="Main_Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+script = ExtResource("1_emfbx")
+
+[node name="Top_Bar_Hbox" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2i(0, 256)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+
+[node name="Logo" type="TextureRect" parent="Top_Bar_Hbox"]
+editor_description = ".jpg image. Background as solid color.
+"
+custom_minimum_size = Vector2i(256, 0)
+layout_mode = 2
+offset_right = 256.0
+offset_bottom = 256.0
+texture = ExtResource("1_3tr2b")
+
+[node name="Top_Bar_Background" type="Panel" parent="Top_Bar_Hbox"]
+layout_mode = 2
+offset_left = 260.0
+offset_right = 1920.0
+offset_bottom = 256.0
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_k5ics")
+
+[node name="Header" type="RichTextLabel" parent="Top_Bar_Hbox/Top_Bar_Background"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 30
+theme_override_fonts/normal_font = ExtResource("2_h25p1")
+theme_override_font_sizes/normal_font_size = 185
+text = "Open-Crops"
+visible_characters = 0
+visible_ratio = 0.0
