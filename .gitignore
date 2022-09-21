@@ -6,6 +6,7 @@
 .import/
 export.cfg
 export_presets.cfg
+.godot
 
 ### Assets ###
 Assets
