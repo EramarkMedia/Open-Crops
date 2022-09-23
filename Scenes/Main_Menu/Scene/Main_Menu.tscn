@@ -1,11 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://7q82dj35oabb"]
+[gd_scene load_steps=7 format=3 uid="uid://7q82dj35oabb"]
 
 [ext_resource type="Texture2D" uid="uid://b3ogyiebtfbni" path="res://Scenes/Main_Menu/Logos/Open-Crops_256.jpg" id="1_3tr2b"]
 [ext_resource type="Script" path="res://Scenes/Main_Menu/Scripts/Main_Menu.gd" id="1_emfbx"]
 [ext_resource type="FontFile" uid="uid://c2ugreleiu1cs" path="res://Scenes/Main_Menu/Fonts/Open_Crops.otf" id="2_h25p1"]
+[ext_resource type="Texture2D" uid="uid://beuxi222conxi" path="res://Scenes/Main_Menu/Slideshow/Images/Countryside.png" id="4_hxvto"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k5ics"]
 bg_color = Color(0.301961, 0.298039, 0.321569, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y4lcq"]
+bg_color = Color(0.380392, 0.380392, 0.380392, 1)
 
 [node name="Main_Menu" type="Control"]
 layout_mode = 3
@@ -18,14 +22,22 @@ size_flags_vertical = 3
 script = ExtResource("1_emfbx")
 version_tag = ".Alpha"
 
-[node name="Top_Bar_Hbox" type="HBoxContainer" parent="."]
-custom_minimum_size = Vector2i(0, 256)
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 10
+anchors_preset = 15
 anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Top_Bar_Hbox" type="HBoxContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2i(0, 256)
+layout_mode = 2
+offset_right = 1920.0
+offset_bottom = 256.0
 grow_horizontal = 2
 
-[node name="Logo" type="TextureRect" parent="Top_Bar_Hbox"]
+[node name="Logo" type="TextureRect" parent="VBoxContainer/Top_Bar_Hbox"]
 editor_description = ".jpg image. Background as solid color.
 "
 custom_minimum_size = Vector2i(256, 0)
@@ -34,7 +46,7 @@ offset_right = 256.0
 offset_bottom = 256.0
 texture = ExtResource("1_3tr2b")
 
-[node name="Top_Bar_Background" type="Panel" parent="Top_Bar_Hbox"]
+[node name="Top_Bar_Background" type="Panel" parent="VBoxContainer/Top_Bar_Hbox"]
 layout_mode = 2
 offset_left = 260.0
 offset_right = 1920.0
@@ -42,7 +54,7 @@ offset_bottom = 256.0
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_k5ics")
 
-[node name="Header" type="RichTextLabel" parent="Top_Bar_Hbox/Top_Bar_Background"]
+[node name="Header" type="RichTextLabel" parent="VBoxContainer/Top_Bar_Hbox/Top_Bar_Background"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -57,7 +69,7 @@ text = "Open-Crops"
 visible_characters = 0
 visible_ratio = 0.0
 
-[node name="Version_Label" type="RichTextLabel" parent="Top_Bar_Hbox/Top_Bar_Background/Header"]
+[node name="Version_Label" type="RichTextLabel" parent="VBoxContainer/Top_Bar_Hbox/Top_Bar_Background/Header"]
 visible = false
 custom_minimum_size = Vector2i(200, 80)
 layout_mode = 1
@@ -80,19 +92,35 @@ theme_override_font_sizes/normal_font_size = 55
 text = ".Alpha"
 metadata/_edit_use_anchors_ = true
 
-[node name="Bottom_Bar_Hbox" type="HBoxContainer" parent="."]
-custom_minimum_size = Vector2i(0, 120)
+[node name="Center_Panel" type="Panel" parent="VBoxContainer"]
+layout_mode = 2
+offset_top = 260.0
+offset_right = 1920.0
+offset_bottom = 956.0
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_y4lcq")
+
+[node name="Background" type="TextureRect" parent="VBoxContainer/Center_Panel"]
 layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -118.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+texture = ExtResource("4_hxvto")
+
+[node name="Bottom_Bar_Hbox" type="HBoxContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2i(0, 120)
+layout_mode = 2
+offset_top = 960.0
+offset_right = 1920.0
+offset_bottom = 1080.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/separation = -1
 
-[node name="Exit_Button" type="Button" parent="Bottom_Bar_Hbox"]
+[node name="Exit_Button" type="Button" parent="VBoxContainer/Bottom_Bar_Hbox"]
 custom_minimum_size = Vector2i(640, 0)
 layout_mode = 2
 offset_right = 640.0
@@ -105,7 +133,7 @@ theme_override_fonts/font = ExtResource("2_h25p1")
 theme_override_font_sizes/font_size = 80
 text = "Exit"
 
-[node name="Configure_Button" type="Button" parent="Bottom_Bar_Hbox"]
+[node name="Configure_Button" type="Button" parent="VBoxContainer/Bottom_Bar_Hbox"]
 custom_minimum_size = Vector2i(640, 0)
 layout_mode = 2
 offset_left = 639.0
@@ -119,7 +147,7 @@ theme_override_fonts/font = ExtResource("2_h25p1")
 theme_override_font_sizes/font_size = 80
 text = "Configure"
 
-[node name="Start_Button" type="Button" parent="Bottom_Bar_Hbox"]
+[node name="Start_Button" type="Button" parent="VBoxContainer/Bottom_Bar_Hbox"]
 custom_minimum_size = Vector2i(640, 0)
 layout_mode = 2
 offset_left = 1279.0
