@@ -16,6 +16,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 3
 script = ExtResource("1_emfbx")
+version_tag = ".Alpha"
 
 [node name="Top_Bar_Hbox" type="HBoxContainer" parent="."]
 custom_minimum_size = Vector2i(0, 256)
@@ -55,3 +56,79 @@ theme_override_font_sizes/normal_font_size = 185
 text = "Open-Crops"
 visible_characters = 0
 visible_ratio = 0.0
+
+[node name="Version_Label" type="RichTextLabel" parent="Top_Bar_Hbox/Top_Bar_Background/Header"]
+visible = false
+custom_minimum_size = Vector2i(200, 80)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.627711
+anchor_top = 0.587039
+anchor_right = 0.756148
+anchor_bottom = 0.587039
+offset_top = 30.718
+offset_right = -13.2051
+offset_bottom = 110.718
+grow_horizontal = 0
+grow_vertical = 2
+rotation = -0.523599
+theme_override_colors/default_color = Color(0.968627, 0.447059, 0.152941, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 15
+theme_override_fonts/normal_font = ExtResource("2_h25p1")
+theme_override_font_sizes/normal_font_size = 55
+text = ".Alpha"
+metadata/_edit_use_anchors_ = true
+
+[node name="Bottom_Bar_Hbox" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2i(0, 120)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -118.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = -1
+
+[node name="Exit_Button" type="Button" parent="Bottom_Bar_Hbox"]
+custom_minimum_size = Vector2i(640, 0)
+layout_mode = 2
+offset_right = 640.0
+offset_bottom = 118.0
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme_override_colors/font_outline_color = Color(0.901961, 0, 0.0941176, 1)
+theme_override_constants/outline_size = 15
+theme_override_fonts/font = ExtResource("2_h25p1")
+theme_override_font_sizes/font_size = 80
+text = "Exit"
+
+[node name="Configure_Button" type="Button" parent="Bottom_Bar_Hbox"]
+custom_minimum_size = Vector2i(640, 0)
+layout_mode = 2
+offset_left = 639.0
+offset_right = 1280.0
+offset_bottom = 118.0
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme_override_colors/font_outline_color = Color(0.980392, 0.627451, 0, 1)
+theme_override_constants/outline_size = 15
+theme_override_fonts/font = ExtResource("2_h25p1")
+theme_override_font_sizes/font_size = 80
+text = "Configure"
+
+[node name="Start_Button" type="Button" parent="Bottom_Bar_Hbox"]
+custom_minimum_size = Vector2i(640, 0)
+layout_mode = 2
+offset_left = 1279.0
+offset_right = 1920.0
+offset_bottom = 118.0
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme_override_colors/font_outline_color = Color(0.0588235, 0.47451, 0, 1)
+theme_override_constants/outline_size = 15
+theme_override_fonts/font = ExtResource("2_h25p1")
+theme_override_font_sizes/font_size = 80
+text = "Start"
