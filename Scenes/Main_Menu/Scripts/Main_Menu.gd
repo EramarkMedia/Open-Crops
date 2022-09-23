@@ -76,7 +76,7 @@ func Header_Slide_Finished(_anim_name):
 	await get_tree().create_timer(0.2).timeout;
 	
 	#Set version label
-	$"Top_Bar_Hbox/Top_Bar_Background/Header/Version_Label".text = version_tag;
+	$"VBoxContainer/Top_Bar_Hbox/Top_Bar_Background/Header/Version_Label".text = version_tag;
 	
 	#Draw version label.
-	$"Top_Bar_Hbox/Top_Bar_Background/Header/Version_Label".show();
+	$"VBoxContainer/Top_Bar_Hbox/Top_Bar_Background/Header/Version_Label".show();
